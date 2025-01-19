@@ -65,9 +65,13 @@
 
         function showNextMessage() {
             if (currentStep < messages.length) {
-                alert(messages[currentStep]);
-                currentStep++; // Переходим к следующему шагу
-                showNextMessage(); // Показываем следующее сообщение
+                // Показываем сообщение с задержкой
+                setTimeout(() => {
+                    document.getElementById("answer-buttons").style.display = "none"; // Скрываем кнопки перед каждым сообщением
+                    alert(messages[currentStep]);
+                    currentStep++; // Переходим к следующему сообщению
+                    showNextMessage(); // Показываем следующее сообщение
+                }, 500);
             } else {
                 showAnswerButtons(); // Когда все сообщения показаны, показываем кнопки для выбора "Верю" или "Не верю"
             }
